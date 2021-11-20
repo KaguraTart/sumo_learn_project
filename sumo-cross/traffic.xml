@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2021-11-20 20:07:01 by Eclipse SUMO netedit Version 1.10.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <sumo-net-file value="F:\大学\MTFwiki\sumo_learn_project\sumo_learn_project\sumo-十字路口仿真全过程建模\cross.net.xml"/>
+    </input>
+
+    <output>
+        <output-file value="F:\大学\MTFwiki\sumo_learn_project\sumo_learn_project\sumo-十字路口仿真全过程建模\cross.net.xml"/>
+    </output>
+
+    <processing>
+        <geometry.min-radius.fix.railways value="false"/>
+        <geometry.max-grade.fix value="false"/>
+        <offset.disable-normalization value="true"/>
+        <lefthand value="false"/>
+    </processing>
+
+    <junctions>
+        <no-turnarounds value="true"/>
+        <junctions.corner-detail value="5"/>
+        <junctions.limit-turn-speed value="5.5"/>
+        <rectangular-lane-cut value="false"/>
+    </junctions>
+
+    <pedestrian>
+        <walkingareas value="false"/>
+    </pedestrian>
+
+    <report>
+        <aggregate-warnings value="5"/>
+    </report>
+
+</configuration>
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <tlLogic id="gneJ6" type="static" programID="0" offset="0">
+        <phase duration="33" state="GGGGGggrrrrrrGGGGggrrrrr"/>
+        <phase duration="3" state="yyyyyggrrrrrryyyyggrrrrr"/>
+        <phase duration="6" state="rrrrrGGrrrrrrrrrrGGrrrrr"/>
+        <phase duration="3" state="rrrrryyrrrrrrrrrryyrrrrr"/>
+        <phase duration="33" state="rrrrrrrGGGGggrrrrrrGGGgg"/>
+        <phase duration="3" state="rrrrrrryyyyggrrrrrryyygg"/>
+        <phase duration="6" state="rrrrrrrrrrrGGrrrrrrrrrGG"/>
+        <phase duration="3" state="rrrrrrrrrrryyrrrrrrrrryy"/>
+    </tlLogic>
+</additional>

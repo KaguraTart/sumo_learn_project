@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 11/20/21 20:29:31 by Eclipse SUMO GUI Version 1.8.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="sumo-cardata-output\test.net.xml"/>
+        <route-files value="sumo-cardata-output\routes1.rou.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="sumo-cardata-output/tripinfo2_TEST.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="20000"/>
+    </time>
+
+    <report>
+        <verbose value="true"/>
+        <duration-log.statistics value="true"/>
+    </report>
+
+    <traci_server>
+        <remote-port value="64152"/>
+    </traci_server>
+
+    <gui_only>
+        <gui-settings-file value="sumo-cardata-output\gui-settings2.cfg"/>
+        <quit-on-end value="true"/>
+        <start value="true"/>
+    </gui_only>
+
+</configuration>
+-->
+
+<tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
+</tripinfos>
