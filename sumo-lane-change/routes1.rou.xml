@@ -1,0 +1,41 @@
+<routes>
+    <vType id="xiaokeche" vClass = "taxi" accei = "0.4" decel = "4.5"
+     length = "4" callFollowMode="carFollowing-W99" departSpeed = "max" maxSpeed="20" 
+    actionStepLength="1"  laneChangeModel="SL2015" cc1="1.1"/>
+
+
+
+  <flow id="xiaokeche_0_"  begin="0" end="7200" vehsPerHour="500"  type="xiaokeche" departLane='random'
+      from = "z1" to = "-s1" />
+  <flow id="xiaokeche_1_"  begin="0" end="7200" vehsPerHour="500" type="xiaokeche" departLane='random'
+      from = "z1" to = "-y1" />
+  <flow id="xiaokeche_2_"  begin="0" end="7200" vehsPerHour="500" type="xiaokeche" departLane='random'
+      from = "z1" to = "-x1" />
+
+
+  <flow id="xiaokeche_3_"  begin="0" end="7200" vehsPerHour="500" type="xiaokeche" departLane='random'
+      from = "y1" to = "-s1" />
+  <flow id="xiaokeche_4_"  begin="0" end="7200" vehsPerHour="500" type="xiaokeche" departLane='random'
+      from = "y1" to = "-z1" />
+  <flow id="xiaokeche_5_"  begin="0" end="7200" vehsPerHour="500" type="xiaokeche" departLane='random'
+      from = "y1" to = "-x1" />
+
+
+  <flow id="xiaokeche_6_"  begin="0" end="7200" vehsPerHour="500" type="xiaokeche" departLane='random'
+      from = "s1" to = "-y1" />
+  <flow id="xiaokeche_7_"  begin="0" end="7200" vehsPerHour="500" type="xiaokeche" departLane='random'
+      from = "s1" to = "-z1" />
+  <flow id="xiaokeche_8_"  begin="0" end="7200" vehsPerHour="500" type="xiaokeche" departLane='random'
+      from = "s1" to = "-x1" />
+
+    
+  <flow id="xiaokeche_9_"  begin="0" end="7200" vehsPerHour="500" type="xiaokeche" departLane='random'
+      from = "x1" to = "-s1" />
+  <flow id="xiaokeche_10_"  begin="0" end="7200" vehsPerHour="500" type="xiaokeche" departLane='random'
+      from = "x1" to = "-z1" />
+  <flow id="xiaokeche_11_"  begin="0" end="7200" vehsPerHour="500" type="xiaokeche" departLane='random'
+      from = "x1" to = "-y1" />
+   
+
+
+</routes> 
