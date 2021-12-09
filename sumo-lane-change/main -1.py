@@ -57,15 +57,17 @@ def traci_control_env_update(step_time):
     traci.start(sumoCmd)
 
     # 仿真延迟
-
-    for step in range(0,step_time):
-
+    step = 0
+    # for step in range(0,step_time):
+    while(1):
         #步长控制
-        traci.simulationStep(step +1)
-        time.sleep(0.05)
+        
+        traci.simulationStep(step)
+        step +=0.05
+        time.sleep(0.00005)
         # if step ==0:
         #     output_data1 = ocd2.output_car_data2(step,project_path)
-        # else:
+        # else:  
         #     output_data1 = pd.concat([output_data1,ocd2.output_car_data2(step,project_path)],axis=0,ignore_index=True)
     
     traci.close(wait=True)
