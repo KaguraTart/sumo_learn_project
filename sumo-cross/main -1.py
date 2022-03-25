@@ -17,7 +17,7 @@ import os, sys
 import  time
 
 #-----引入地址------
-sumo_path = "F:\\software two\\sumo-1.8.0"
+sumo_path = "F:\\software two\\sumo-1.10.0"
 project_path =  "sumo-cross"
 # cfg_path = "F:\sumo_pro/traci_main\main\zhangshijie.sumo.cfg"
 cfg_path = "sumo-cross\sumo_simu.sumo.cfg"
