@@ -4,49 +4,57 @@
 # @version:	python3.8
 # @institution:Tongji university
 
-from typing import Counter
-import  traci
-import  numpy as np
-import  pandas as pd
+import traci
+import pandas as pd
 import os
 
-def output_car_data2(step,project_path):
 
-    position_data = pd.DataFrame(columns=['car_num','x_position','y_position','x_acce(m^2/s)','y_acce(m^2/s)','length(m)','speed(m/s)','LateralSpeed(m/s)','accelaration(m^2/s)','angel(du)','roadID','LaneID','Lane_index','lane_position'],dtype=float)
+def output_car_data2(step, project_path):
+    """Collect per-step vehicle state and save to CSV.
 
-    #获取车辆ID
+    Note: output_car_data2.py is the preferred version for aggregating data
+    across steps. This file saves one CSV per step to disk.
+
+    Args:
+        step: Current simulation step number.
+        project_path: Path to the project directory (used for output path).
+    """
+    columns = [
+        "car_num", "x_position", "y_position",
+        "x_acceleration(m/s^2)", "y_acceleration(m/s^2)",
+        "length(m)", "speed(m/s)", "LateralSpeed(m/s)",
+        "acceleration(m/s^2)", "angle(deg)",
+        "roadID", "LaneID", "Lane_index", "lane_position",
+    ]
+    rows = []
     all_vehicle_id = traci.vehicle.getIDList()
-    # print(type(all_vehicle_id))
-    n = 0
-    #获取车辆位置
-    for i in all_vehicle_id:
-        all_vehicle_position = traci.vehicle.getPosition(i)
-        all_vehicle_accelatatioin = traci.vehicle.getAcceleration(i)
-        get_vehicle_length = traci.vehicle.getLength(i)
-        get_speed = traci.vehicle.getSpeed(i)
-        get_lateral_speed = traci.vehicle.getLateralSpeed(i)
-        # get_max_speedlat = traci.vehicle.getMaxSpeedLat(i)
-        get_roadID = traci.vehicle.getRoadID(i)
-        get_laneID = traci.vehicle.getLaneID(i)
-        get_angle = traci.vehicle.getAngle(i)
-        get_lane_index = traci.vehicle.getLaneIndex(i)
-        get_lane_position = traci.vehicle.getLanePosition(i)
-        #计算加速度
-        if n == 0:
-            x_acce = 0
-            y_acce = 0
-        else:
-            x_acce = get_speed - traci.vehicle.getSpeed(all_vehicle_id[n-1])
-            y_acce = get_lateral_speed - traci.vehicle.getLateralSpeed(all_vehicle_id[n-1])
-        
-        # print(i)
-        # print(all_vehicle_id[n])
-        
-        position_data.loc[n] = [all_vehicle_id[n],all_vehicle_position[0],all_vehicle_position[1],x_acce,y_acce,get_vehicle_length,get_speed,get_lateral_speed,all_vehicle_accelatatioin,get_angle,get_roadID,get_laneID,get_lane_index,get_lane_position]
-        n +=1
-    # print(position_data)
-    try:
-        position_data.to_csv(project_path+"/output_data/for"+str(step)+"seconds"+".csv")
-    except:
-        os.makedirs(project_path+"/output_data") 
-        position_data.to_csv(project_path+"/output_data"+"/for"+str(step)+"seconds"+".csv")
+
+    for vehicle_id in all_vehicle_id:
+        position = traci.vehicle.getPosition(vehicle_id)
+        acceleration = traci.vehicle.getAcceleration(vehicle_id)
+        length = traci.vehicle.getLength(vehicle_id)
+        speed = traci.vehicle.getSpeed(vehicle_id)
+        lateral_speed = traci.vehicle.getLateralSpeed(vehicle_id)
+        road_id = traci.vehicle.getRoadID(vehicle_id)
+        lane_id = traci.vehicle.getLaneID(vehicle_id)
+        angle = traci.vehicle.getAngle(vehicle_id)
+        lane_index = traci.vehicle.getLaneIndex(vehicle_id)
+        lane_position = traci.vehicle.getLanePosition(vehicle_id)
+
+        # x_acceleration: SUMO longitudinal acceleration (m/s^2)
+        # y_acceleration: lateral acceleration is not directly provided by SUMO
+        x_acce = acceleration
+        y_acce = 0.0
+
+        rows.append([
+            vehicle_id, position[0], position[1],
+            x_acce, y_acce,
+            length, speed, lateral_speed,
+            acceleration, angle,
+            road_id, lane_id, lane_index, lane_position,
+        ])
+
+    position_data = pd.DataFrame(rows, columns=columns)
+    output_dir = os.path.join(project_path, "output_data")
+    os.makedirs(output_dir, exist_ok=True)
+    position_data.to_csv(os.path.join(output_dir, f"for{step}seconds.csv"))

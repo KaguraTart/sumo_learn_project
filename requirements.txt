@@ -1,0 +1,8 @@
+# Python dependencies for sumo_learn_project
+# Install with: pip install -r requirements.txt
+#
+# Note: traci and sumolib are bundled with SUMO — they are NOT installed via pip.
+# Install SUMO first: https://sumo.dlr.de/docs/Installing/index.html
+
+pandas>=1.3.0
+numpy>=1.21.0
